@@ -1,0 +1,18 @@
+<?php
+//logging into mysql server
+$link = mysqli_connect("localhost", "root", "root", "demo");
+ //checking if mysql is running 
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+//adding wormy to persons table 
+$sql = "INSERT INTO persons (first_name, last_name, email_address) VALUES ('Wormy', 'VonWormenstein', 'email@email.com')";
+if(mysqli_query($link, $sql)){
+    echo "Records added successfully.";
+//checking for errors in the code
+	} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+//closing connection with mysql 
+mysqli_close($link);
+?>
